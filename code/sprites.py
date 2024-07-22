@@ -6,4 +6,4 @@ class Sprite(pygame.sprite.Sprite):
         self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
         self.image.fill('white')
         #creates floating rectangle
-        self.rect = self.image.get_frect()
+        self.rect = self.image.get_frect(topleft = pos)

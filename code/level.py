@@ -1,4 +1,5 @@
 from settings import *
+from sprites import Sprite
 
 
 class Level:
@@ -7,13 +8,17 @@ class Level:
 
         self.setup(tmx_map)
 
+        # groups
+        self.all_sprites = pygame.sprite.Group()
+
+
+
     def setup(self, tmx_map):
         #for each position in the tile map we get x or y
         for x, y, surf in tmx_map.get_layer_by_name('Terrain').tiles():
-            print(x)
-            print(y)
-            print(surf)
+            Sprite((x,y), surf, self.all_sprites)
 
     def run(self):
-        self.display_surface.fill('gray')
+        self.display_surface.fill('black')
+        self.all_sprites.draw(self.display_surface)
 
